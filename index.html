@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redbonnets AI - Intelligent Automation for Home Services</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #020617; /* Slate 950 */
+        }
+
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.05);
+            -webkit-backdrop-filter: blur(40px);
+            backdrop-filter: blur(40px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-gradient {
+            background: radial-gradient(circle at top, rgba(79, 70, 229, 0.3) 0%, rgba(2, 6, 23, 0) 40%);
+        }
+        
+        .feature-gradient {
+            background: radial-gradient(circle at 50% 0, rgba(56, 189, 248, 0.1), transparent 50%);
+        }
+
+        .cta-gradient {
+            background: radial-gradient(circle at bottom, rgba(79, 70, 229, 0.2), transparent 60%);
+        }
+
+        .chat-bubble {
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        #chatbot-window {
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+    </style>
+</head>
+<body class="text-slate-300 overflow-x-hidden">
+
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4">
+            <div class="flex justify-between items-center liquid-glass rounded-full p-2">
+                <a href="#" class="flex items-center space-x-2">
+                    <svg width="40" height="40" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#4F46E5" d="M128 24a104 104 0 0 0-91.5 155.8a103.9 103.9 0 0 0 183 0A104 104 0 0 0 128 24m-12.7 41.8a11.9 11.9 0 0 1 12.1-1.1l.6.3l64 36.9a12 12 0 0 1 6 10.4v73.8a12 12 0 0 1-6 10.4l-64 36.9a12 12 0 0 1-12.7-10.7V76.5a12.3 12.3 0 0 1 .6-4.7m-20.6 8.5a12 12 0 0 1 12.1-1.1l.6.3l64 36.9a12 12 0 0 1 6 10.4v19.4a12 12 0 0 1-4.2 8.9L124 180.4a12 12 0 0 1-18.1-9.3V86.8a12 12 0 0 1 6.6-10.7l.6-.3Z"/></svg>
+                    <span class="text-xl font-bold text-white">Redbonnets AI</span>
+                </a>
+                <nav class="hidden md:flex items-center space-x-2">
+                    <a href="#services" class="px-4 py-2 text-sm rounded-full hover:bg-white/10 transition-colors">Services</a>
+                    <a href="#showcase" class="px-4 py-2 text-sm rounded-full hover:bg-white/10 transition-colors">Showcase</a>
+                    <a href="#contact" class="px-4 py-2 text-sm rounded-full hover:bg-white/10 transition-colors">Contact</a>
+                </nav>
+                <a href="#contact" class="hidden md:block bg-indigo-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-indigo-700 transition-colors">Get Started</a>
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-full hover:bg-white/10">
+                    <i data-lucide="menu" class="w-6 h-6 text-white"></i>
+                </button>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden">
+             <div class="container mx-auto px-6 pb-4">
+                 <div class="liquid-glass rounded-2xl p-4 flex flex-col space-y-2">
+                    <a href="#services" class="block px-4 py-2 text-sm rounded-full hover:bg-white/10 transition-colors">Services</a>
+                    <a href="#showcase" class="block px-4 py-2 text-sm rounded-full hover:bg-white/10 transition-colors">Showcase</a>
+                    <a href="#contact" class="block px-4 py-2 text-sm rounded-full hover:bg-white/10 transition-colors">Contact</a>
+                    <a href="#contact" class="block bg-indigo-600 text-white text-center mt-2 px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-indigo-700 transition-colors">Get Started</a>
+                 </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="pt-24">
+
+        <!-- Hero Section -->
+        <section id="hero" class="relative text-center py-20 md:py-32 overflow-hidden">
+            <div class="absolute inset-0 hero-gradient"></div>
+            <div class="container mx-auto px-6 relative z-10">
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-tight mb-4">
+                    AI that works as hard as you do.
+                </h1>
+                <p class="max-w-3xl mx-auto text-lg md:text-xl text-slate-400 mb-8">
+                    Redbonnets AI provides intelligent automation for service businesses. Spend less time on paperwork and more time on what matters—your customers.
+                </p>
+                <a href="#contact" class="bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-indigo-700 transition-transform hover:scale-105 inline-block">
+                    Automate My Business
+                </a>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="py-20 md:py-28 feature-gradient">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white">Complete AI Solutions for Service Pros</h2>
+                    <p class="max-w-3xl mx-auto mt-4 text-slate-400">
+                        From HVAC to plumbing, our custom AI chatbot solutions work on your website, Facebook, and even via text. Get started with a solution tailored to your business, with packages starting at $995/month.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service Card 1 -->
+                    <div class="liquid-glass p-8 rounded-3xl transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="bg-sky-500/10 text-sky-400 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                            <i data-lucide="bot" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">24/7 AI Receptionist</h3>
+                        <p class="text-slate-400">Never miss a lead. Our AI answers calls, books appointments, and qualifies customers, day or night.</p>
+                    </div>
+                    <!-- Service Card 2 -->
+                    <div class="liquid-glass p-8 rounded-3xl transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="bg-sky-500/10 text-sky-400 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                            <i data-lucide="file-text" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Automated Quoting</h3>
+                        <p class="text-slate-400">Generate accurate, professional quotes in seconds. Our AI analyzes job details to create instant estimates.</p>
+                    </div>
+                    <!-- Service Card 3 -->
+                    <div class="liquid-glass p-8 rounded-3xl transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="bg-sky-500/10 text-sky-400 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                            <i data-lucide="calendar-check" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Intelligent Scheduling</h3>
+                        <p class="text-slate-400">Optimize your routes and schedule jobs automatically based on technician availability and location.</p>
+                    </div>
+                     <!-- Service Card 4 -->
+                    <div class="liquid-glass p-8 rounded-3xl transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="bg-sky-500/10 text-sky-400 rounded-full w-12 h-12 flex items-center justify-center mb-4">
+                            <i data-lucide="package-check" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-2">Automated Inventory</h3>
+                        <p class="text-slate-400">Our AI monitors stock levels and automatically re-orders parts and supplies before you run out.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- AI Showcase Section -->
+        <section id="showcase" class="py-20 md:py-28">
+            <div class="container mx-auto px-6">
+                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                    <div class="text-center lg:text-left">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">See Our AI in Action</h2>
+                        <p class="mt-4 text-lg text-slate-400">
+                            Wondering how an AI can understand the difference between a leaky faucet and a full pipe replacement?
+                            Fill out the form to start a conversation with our demo bot. Ask it anything about a fictional plumbing business to see how it works.
+                        </p>
+                        <p class="mt-4 text-slate-500 text-sm">
+                            This is a live demonstration. You're interacting with the same technology our clients use every day.
+                        </p>
+                    </div>
+                    <div id="form-container" class="liquid-glass p-8 rounded-3xl">
+                         <h3 class="text-xl font-bold text-white mb-4 text-center">Let's Talk AI</h3>
+                        <!-- Note: Replace the src with your actual third-party form URL -->
+                         <div class="bg-slate-900 rounded-2xl overflow-hidden h-96">
+                            <iframe src="https://forms.gle/your-form-id" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="Contact Form">Loading…</iframe>
+                         </div>
+                         <button id="start-chat-btn-placeholder" class="w-full mt-6 bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-700 transition-colors">
+                            Initiate Chatbot Demo
+                        </button>
+                    </div>
+
+                    <!-- Chatbot Window (Initially Hidden) -->
+                    <div id="chatbot-window" class="lg:col-span-2 mt-16 opacity-0 transform scale-95 hidden">
+                        <div class="liquid-glass rounded-3xl max-w-4xl mx-auto">
+                            <div class="p-4 border-b border-white/10 flex items-center justify-between">
+                                <div class="flex items-center space-x-3">
+                                    <div class="relative">
+                                        <svg class="w-10 h-10 text-sky-400" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M152.23 203.4a15.91 15.91 0 0 1-11.31-4.68l-32.2-32.2a15.86 15.86 0 0 1 0-22.62l32.2-32.2a16 16 0 0 1 22.62 22.62L131.33 160l32.21 32.2a16 16 0 0 1-11.31 21.2Zm-52.46 0a16 16 0 0 1-11.32-21.2l32.21-32.2l-32.21-32.2a16 16 0 0 1 22.63-22.62l32.2 32.2a15.86 15.86 0 0 1 0 22.62l-32.2 32.2a15.91 15.91 0 0 1-11.31 4.68Zm88.23-144.6a100 100 0 1 0-141.42 141.42A100 100 0 1 0 188 58.8ZM36 128a92 92 0 1 1 92 92a92.1 92.1 0 0 1-92-92Z"/></svg>
+                                        <span class="absolute bottom-0 right-0 block h-3 w-3 rounded-full bg-green-500 ring-2 ring-slate-800"></span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-white">Plumbing Demo Bot</h4>
+                                        <p class="text-sm text-slate-400">Online</p>
+                                    </div>
+                                </div>
+                                <button id="close-chat-btn" class="p-2 rounded-full hover:bg-white/10">
+                                    <i data-lucide="x" class="w-5 h-5"></i>
+                                </button>
+                            </div>
+                            <div id="chat-messages" class="p-6 h-80 overflow-y-auto flex flex-col space-y-4">
+                                <!-- Chat messages will be appended here -->
+                                <div class="flex items-start space-x-3">
+                                    <div class="bg-sky-500/20 text-sky-300 p-2 rounded-full flex-shrink-0">
+                                        <i data-lucide="bot" class="w-5 h-5"></i>
+                                    </div>
+                                    <div class="liquid-glass px-4 py-3 rounded-2xl rounded-bl-none">
+                                        <p class="text-white">Hello! I'm the Redbonnets AI demo bot. To demonstrate, let's pretend I'm managing a business called "AquaFlow Plumbers". How can I help you today?</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="p-4 border-t border-white/10">
+                                <div class="relative">
+                                    <input id="chat-input" type="text" placeholder="Ask about services, pricing, or appointments..." class="w-full bg-slate-900/50 border border-slate-700 rounded-full py-3 pl-5 pr-14 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                    <button id="send-chat-btn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-indigo-600 w-10 h-10 rounded-full flex items-center justify-center hover:bg-indigo-700 transition-colors">
+                                        <i data-lucide="send" class="w-5 h-5 text-white"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section id="contact" class="py-20 md:py-28 cta-gradient">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl md:text-4xl font-bold text-white">Ready to Transform Your Business?</h2>
+                <p class="max-w-2xl mx-auto mt-4 text-slate-400 mb-8">
+                    Stop letting tedious tasks slow you down. Let Redbonnets AI handle the busywork, so you can focus on growth. Schedule a free, no-obligation consultation today.
+                </p>
+                <a href="#" class="bg-white text-slate-900 px-8 py-4 rounded-full font-semibold hover:bg-slate-200 transition-transform hover:scale-105 inline-block">
+                    Book a Free Consultation
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="border-t border-white/10 mt-20">
+        <div class="container mx-auto px-6 py-8">
+            <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
+                <div>
+                    <a href="#" class="flex items-center justify-center md:justify-start space-x-2 mb-4">
+                        <svg width="32" height="32" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#4F46E5" d="M128 24a104 104 0 0 0-91.5 155.8a103.9 103.9 0 0 0 183 0A104 104 0 0 0 128 24m-12.7 41.8a11.9 11.9 0 0 1 12.1-1.1l.6.3l64 36.9a12 12 0 0 1 6 10.4v73.8a12 12 0 0 1-6 10.4l-64 36.9a12 12 0 0 1-12.7-10.7V76.5a12.3 12.3 0 0 1 .6-4.7m-20.6 8.5a12 12 0 0 1 12.1-1.1l.6.3l64 36.9a12 12 0 0 1 6 10.4v19.4a12 12 0 0 1-4.2 8.9L124 180.4a12 12 0 0 1-18.1-9.3V86.8a12 12 0 0 1 6.6-10.7l.6-.3Z"/></svg>
+                        <span class="text-lg font-bold text-white">Redbonnets AI</span>
+                    </a>
+                    <p class="text-sm text-slate-400">&copy; 2024 Redbonnets AI. All rights reserved.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="text-sm text-slate-400 hover:text-white">Services</a></li>
+                        <li><a href="#showcase" class="text-sm text-slate-400 hover:text-white">Demo</a></li>
+                        <li><a href="#" class="text-sm text-slate-400 hover:text-white">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Connect</h4>
+                    <div class="flex justify-center md:justify-start space-x-4">
+                        <a href="#" class="text-slate-400 hover:text-white"><i data-lucide="twitter" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-white"><i data-lucide="linkedin" class="w-5 h-5"></i></a>
+                        <a href="#" class="text-slate-400 hover:text-white"><i data-lucide="facebook" class="w-5 h-5"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        lucide.createIcons();
+
+        // Mobile Menu Toggle
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Hide mobile menu on link click
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target.tagName === 'A') {
+                mobileMenu.classList.add('hidden');
+            }
+        });
+
+
+        // Header background on scroll
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('py-2');
+                header.classList.remove('py-4');
+            } else {
+                header.classList.add('py-4');
+                header.classList.remove('py-2');
+            }
+        });
+
+        // Chatbot initiation logic
+        const startChatBtn = document.getElementById('start-chat-btn-placeholder');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const formContainer = document.getElementById('form-container');
+        const closeChatBtn = document.getElementById('close-chat-btn');
+        const showcaseSection = document.getElementById('showcase');
+
+        startChatBtn.addEventListener('click', () => {
+            // In a real scenario, you'd validate the form here first.
+            // For this demo, we'll just show the chatbot.
+            formContainer.classList.add('hidden');
+            chatbotWindow.classList.remove('hidden');
+            setTimeout(() => {
+                chatbotWindow.classList.remove('opacity-0', 'scale-95');
+                chatbotWindow.classList.add('opacity-100', 'scale-100');
+            }, 10);
+            
+             // Scroll to the chatbot window
+             showcaseSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+        
+        closeChatBtn.addEventListener('click', () => {
+            chatbotWindow.classList.add('opacity-0', 'scale-95');
+             setTimeout(() => {
+                chatbotWindow.classList.add('hidden');
+                formContainer.classList.remove('hidden');
+            }, 500);
+        });
+
+        // Chatbot conversation logic
+        const chatInput = document.getElementById('chat-input');
+        const sendChatBtn = document.getElementById('send-chat-btn');
+        const chatMessages = document.getElementById('chat-messages');
+
+        const handleSendChat = () => {
+            const userMessage = chatInput.value.trim();
+            if (!userMessage) return;
+
+            // Display user message
+            const userMessageEl = document.createElement('div');
+            userMessageEl.className = 'flex items-start space-x-3 justify-end';
+            userMessageEl.innerHTML = `
+                <div class="bg-indigo-600/80 px-4 py-3 rounded-2xl rounded-br-none">
+                    <p class="text-white">${userMessage}</p>
+                </div>
+                <div class="bg-slate-700 text-slate-300 p-2 rounded-full flex-shrink-0">
+                    <i data-lucide="user" class="w-5 h-5"></i>
+                </div>
+            `;
+            chatMessages.appendChild(userMessageEl);
+            lucide.createIcons();
+            
+            chatInput.value = '';
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // AI response (simple simulation)
+            setTimeout(() => {
+                const aiResponse = getAIResponse(userMessage);
+                const aiMessageEl = document.createElement('div');
+                aiMessageEl.className = 'flex items-start space-x-3 chat-bubble';
+                aiMessageEl.innerHTML = `
+                    <div class="bg-sky-500/20 text-sky-300 p-2 rounded-full flex-shrink-0">
+                        <i data-lucide="bot" class="w-5 h-5"></i>
+                    </div>
+                    <div class="liquid-glass px-4 py-3 rounded-2xl rounded-bl-none">
+                        <p class="text-white">${aiResponse}</p>
+                    </div>
+                `;
+                chatMessages.appendChild(aiMessageEl);
+                lucide.createIcons();
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }, 1500);
+        };
+        
+        sendChatBtn.addEventListener('click', handleSendChat);
+        chatInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                handleSendChat();
+            }
+        });
+
+
+        // Simulated AI responses
+        function getAIResponse(message) {
+            message = message.toLowerCase();
+            if (message.includes('price') || message.includes('cost') || message.includes('how much')) {
+                return "For AquaFlow Plumbers, our standard service call-out fee is $95, which includes the first 30 minutes of diagnostics. After that, we bill at $120 per hour, plus materials. Does that sound fair?";
+            }
+            if (message.includes('appointment') || message.includes('book') || message.includes('schedule')) {
+                return "I can certainly help with that. What day and time works best for you? We have availability tomorrow afternoon between 1 PM and 4 PM.";
+            }
+            if (message.includes('emergency') || message.includes('leak')) {
+                return "I understand this is urgent. I can dispatch an emergency technician to you right away. Can you please confirm your address?";
+            }
+            if (message.includes('services')) {
+                return "AquaFlow Plumbers offers a full range of services, including drain cleaning, water heater repair and installation, leak detection, and full-service remodeling. What are you looking for today?";
+            }
+             if (message.includes('thank')) {
+                return "You're very welcome! Is there anything else I can assist you with for AquaFlow Plumbers today?";
+            }
+            return "That's a great question. As an AI, I can access a knowledge base to provide detailed answers. For example, I could tell you the pros and cons of a tankless water heater. Try asking me another question about plumbing services!";
+        }
+
+    </script>
+</body>
+</html>

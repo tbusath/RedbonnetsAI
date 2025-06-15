@@ -11,11 +11,13 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
+        /* Base styles for Inter font and dark background */
         body {
             font-family: 'Inter', sans-serif;
             background-color: #020617; /* Slate 950 */
         }
 
+        /* Liquid glass effect for elements like header and cards */
         .liquid-glass {
             background: rgba(255, 255, 255, 0.05);
             -webkit-backdrop-filter: blur(40px);
@@ -23,18 +25,22 @@
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
+        /* Gradient for the Hero section background */
         .hero-gradient {
             background: radial-gradient(circle at top, rgba(79, 70, 229, 0.3) 0%, rgba(2, 6, 23, 0) 40%);
         }
         
+        /* Gradient for the Features/Services section background */
         .feature-gradient {
             background: radial-gradient(circle at 50% 0, rgba(56, 189, 248, 0.1), transparent 50%);
         }
 
+        /* Gradient for the Call-to-Action section background */
         .cta-gradient {
             background: radial-gradient(circle at bottom, rgba(79, 70, 229, 0.2), transparent 60%);
         }
 
+        /* Chat bubble animation for AI responses */
         .chat-bubble {
             animation: float 3s ease-in-out infinite;
         }
@@ -44,49 +50,69 @@
             50% { transform: translateY(-10px); }
         }
         
+        /* Chatbot window transition for smooth appearance/disappearance */
         #chatbot-window {
             transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out;
+        }
+
+        /* Loading spinner styling */
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #4F46E5; /* Indigo-600 */
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
 
     </style>
 </head>
 <body class="text-slate-300 overflow-x-hidden">
 
-    <!-- Header -->
+    <!-- Header Section: Navigation bar with liquid glass effect -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center liquid-glass rounded-full p-2">
                 <a href="#" class="flex items-center space-x-2">
+                    <!-- Logo SVG for Redbonnets AI -->
                     <svg width="40" height="40" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#4F46E5" d="M128 24a104 104 0 0 0-91.5 155.8a103.9 103.9 0 0 0 183 0A104 104 0 0 0 128 24m-12.7 41.8a11.9 11.9 0 0 1 12.1-1.1l.6.3l64 36.9a12 12 0 0 1 6 10.4v73.8a12 12 0 0 1-6 10.4l-64 36.9a12 12 0 0 1-12.7-10.7V76.5a12.3 12.3 0 0 1 .6-4.7m-20.6 8.5a12 12 0 0 1 12.1-1.1l.6.3l64 36.9a12 12 0 0 1 6 10.4v19.4a12 12 0 0 1-4.2 8.9L124 180.4a12 12 0 0 1-18.1-9.3V86.8a12 12 0 0 1 6.6-10.7l.6-.3Z"/></svg>
                     <span class="text-xl font-bold text-white">Redbonnets AI</span>
                 </a>
+                <!-- Desktop Navigation Links -->
                 <nav class="hidden md:flex items-center space-x-2">
                     <a href="#services" class="px-4 py-2 text-sm rounded-full hover:bg-white/10 transition-colors">Services</a>
                     <a href="#showcase" class="px-4 py-2 text-sm rounded-full hover:bg-white/10 transition-colors">Showcase</a>
                     <a href="#contact" class="px-4 py-2 text-sm rounded-full hover:bg-white/10 transition-colors">Contact</a>
                 </nav>
+                <!-- Desktop Get Started Button -->
                 <a href="#contact" class="hidden md:block bg-indigo-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-indigo-700 transition-colors">Get Started</a>
+                <!-- Mobile Menu Button -->
                 <button id="mobile-menu-btn" class="md:hidden p-2 rounded-full hover:bg-white/10">
                     <i data-lucide="menu" class="w-6 h-6 text-white"></i>
                 </button>
             </div>
         </div>
-        <!-- Mobile Menu -->
+        <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden">
-             <div class="container mx-auto px-6 pb-4">
-                 <div class="liquid-glass rounded-2xl p-4 flex flex-col space-y-2">
+            <div class="container mx-auto px-6 pb-4">
+                <div class="liquid-glass rounded-2xl p-4 flex flex-col space-y-2">
                     <a href="#services" class="block px-4 py-2 text-sm rounded-full hover:bg-white/10 transition-colors">Services</a>
                     <a href="#showcase" class="block px-4 py-2 text-sm rounded-full hover:bg-white/10 transition-colors">Showcase</a>
                     <a href="#contact" class="block px-4 py-2 text-sm rounded-full hover:bg-white/10 transition-colors">Contact</a>
                     <a href="#contact" class="block bg-indigo-600 text-white text-center mt-2 px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-indigo-700 transition-colors">Get Started</a>
-                 </div>
+                </div>
             </div>
         </div>
     </header>
 
     <main class="pt-24">
 
-        <!-- Hero Section -->
+        <!-- Hero Section: Main heading and call to action -->
         <section id="hero" class="relative text-center py-20 md:py-32 overflow-hidden">
             <div class="absolute inset-0 hero-gradient"></div>
             <div class="container mx-auto px-6 relative z-10">
@@ -96,13 +122,13 @@
                 <p class="max-w-3xl mx-auto text-lg md:text-xl text-slate-400 mb-8">
                     Redbonnets AI provides intelligent automation for service businesses. Spend less time on paperwork and more time on what matters—your customers.
                 </p>
-                <a href="#contact" class="bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-indigo-700 transition-transform hover:scale-105 inline-block">
+                <a href="#showcase" class="bg-indigo-600 text-white px-8 py-4 rounded-full font-semibold hover:bg-indigo-700 transition-transform hover:scale-105 inline-block">
                     Automate My Business
                 </a>
             </div>
         </section>
 
-        <!-- Services Section -->
+        <!-- Services Section: Features offered by Redbonnets AI -->
         <section id="services" class="py-20 md:py-28 feature-gradient">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
@@ -112,7 +138,7 @@
                     </p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                    <!-- Service Card 1 -->
+                    <!-- Service Card 1: 24/7 AI Receptionist -->
                     <div class="liquid-glass p-8 rounded-3xl transform hover:-translate-y-2 transition-transform duration-300">
                         <div class="bg-sky-500/10 text-sky-400 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                             <i data-lucide="bot" class="w-6 h-6"></i>
@@ -120,7 +146,7 @@
                         <h3 class="text-xl font-bold text-white mb-2">24/7 AI Receptionist</h3>
                         <p class="text-slate-400">Never miss a lead. Our AI answers calls, books appointments, and qualifies customers, day or night.</p>
                     </div>
-                    <!-- Service Card 2 -->
+                    <!-- Service Card 2: Automated Quoting -->
                     <div class="liquid-glass p-8 rounded-3xl transform hover:-translate-y-2 transition-transform duration-300">
                         <div class="bg-sky-500/10 text-sky-400 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                             <i data-lucide="file-text" class="w-6 h-6"></i>
@@ -128,7 +154,7 @@
                         <h3 class="text-xl font-bold text-white mb-2">Automated Quoting</h3>
                         <p class="text-slate-400">Generate accurate, professional quotes in seconds. Our AI analyzes job details to create instant estimates.</p>
                     </div>
-                    <!-- Service Card 3 -->
+                    <!-- Service Card 3: Intelligent Scheduling -->
                     <div class="liquid-glass p-8 rounded-3xl transform hover:-translate-y-2 transition-transform duration-300">
                         <div class="bg-sky-500/10 text-sky-400 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                             <i data-lucide="calendar-check" class="w-6 h-6"></i>
@@ -136,7 +162,7 @@
                         <h3 class="text-xl font-bold text-white mb-2">Intelligent Scheduling</h3>
                         <p class="text-slate-400">Optimize your routes and schedule jobs automatically based on technician availability and location.</p>
                     </div>
-                     <!-- Service Card 4 -->
+                    <!-- Service Card 4: Automated Inventory -->
                     <div class="liquid-glass p-8 rounded-3xl transform hover:-translate-y-2 transition-transform duration-300">
                         <div class="bg-sky-500/10 text-sky-400 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                             <i data-lucide="package-check" class="w-6 h-6"></i>
@@ -148,42 +174,64 @@
             </div>
         </section>
 
-        <!-- AI Showcase Section -->
+        <!-- AI Showcase Section: Custom HTML form and display chatbot demo -->
         <section id="showcase" class="py-20 md:py-28">
             <div class="container mx-auto px-6">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                     <div class="text-center lg:text-left">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white">See Our AI in Action</h2>
+                        <h2 class="text-3xl md:text-4xl font-bold text-white">See Your AI in Action</h2>
                         <p class="mt-4 text-lg text-slate-400">
-                            Wondering how an AI can understand the difference between a leaky faucet and a full pipe replacement?
-                            Fill out the form to start a conversation with our demo bot. Ask it anything about a fictional plumbing business to see how it works.
+                            Want to see how an AI can understand *your* business? Fill out the form below with your company's website.
+                            Once submitted, our system will analyze your site and activate a custom chatbot demo right here, tailored to your business!
                         </p>
                         <p class="mt-4 text-slate-500 text-sm">
-                            This is a live demonstration. You're interacting with the same technology our clients use every day.
+                            This is a live demonstration using advanced AI. Experience the future of intelligent automation.
                         </p>
                     </div>
+                    <!-- Form Container with HTML Form -->
                     <div id="form-container" class="liquid-glass p-8 rounded-3xl">
-                         <h3 class="text-xl font-bold text-white mb-4 text-center">Let's Talk AI</h3>
-                        <!-- Note: Replace the src with your actual third-party form URL -->
-                         <div class="bg-slate-900 rounded-2xl overflow-hidden h-96">
-                            <iframe src="https://forms.gle/your-form-id" width="100%" height="100%" frameborder="0" marginheight="0" marginwidth="0" title="Contact Form">Loading…</iframe>
-                         </div>
-                         <button id="start-chat-btn-placeholder" class="w-full mt-6 bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-700 transition-colors">
-                            Initiate Chatbot Demo
-                        </button>
+                        <h3 class="text-xl font-bold text-white mb-4 text-center">Get Your Custom AI Demo</h3>
+                        <form id="ai-demo-form" class="space-y-4">
+                            <div>
+                                <label for="full-name" class="block text-sm font-medium text-slate-300 mb-1">Full Name</label>
+                                <input type="text" id="full-name" name="fullName" required class="w-full p-3 rounded-md bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label for="company-url" class="block text-sm font-medium text-slate-300 mb-1">Company Website URL</label>
+                                <input type="url" id="company-url" name="websiteUrl" placeholder="https://yourcompany.com" required class="w-full p-3 rounded-md bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label for="email-address" class="block text-sm font-medium text-slate-300 mb-1">Email Address</label>
+                                <input type="email" id="email-address" name="email" required class="w-full p-3 rounded-md bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <div>
+                                <label for="phone-number" class="block text-sm font-medium text-slate-300 mb-1">Phone Number</label>
+                                <input type="tel" id="phone-number" name="phone" required class="w-full p-3 rounded-md bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:ring-indigo-500 focus:border-indigo-500">
+                            </div>
+                            <button type="submit" class="w-full mt-6 bg-indigo-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-indigo-700 transition-colors">
+                                Activate My Custom Demo
+                            </button>
+                        </form>
+                        <div id="form-submission-message" class="mt-4 text-center text-sm" style="display: none;"></div>
                     </div>
 
                     <!-- Chatbot Window (Initially Hidden) -->
                     <div id="chatbot-window" class="lg:col-span-2 mt-16 opacity-0 transform scale-95 hidden">
-                        <div class="liquid-glass rounded-3xl max-w-4xl mx-auto">
+                         <div class="text-center mb-8" id="chatbot-loading-state">
+                            <div class="spinner mx-auto mb-4"></div>
+                            <p class="text-lg text-slate-400">Preparing your personalized AI demo...</p>
+                            <p class="text-sm text-slate-500">This might take a moment as we analyze your website data.</p>
+                        </div>
+                        <div class="liquid-glass rounded-3xl max-w-4xl mx-auto" id="actual-chatbot-ui" style="display: none;">
                             <div class="p-4 border-b border-white/10 flex items-center justify-between">
                                 <div class="flex items-center space-x-3">
                                     <div class="relative">
+                                        <!-- AI bot icon -->
                                         <svg class="w-10 h-10 text-sky-400" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M152.23 203.4a15.91 15.91 0 0 1-11.31-4.68l-32.2-32.2a15.86 15.86 0 0 1 0-22.62l32.2-32.2a16 16 0 0 1 22.62 22.62L131.33 160l32.21 32.2a16 16 0 0 1-11.31 21.2Zm-52.46 0a16 16 0 0 1-11.32-21.2l32.21-32.2l-32.21-32.2a16 16 0 0 1 22.63-22.62l32.2 32.2a15.86 15.86 0 0 1 0 22.62l-32.2 32.2a15.91 15.91 0 0 1-11.31 4.68Zm88.23-144.6a100 100 0 1 0-141.42 141.42A100 100 0 1 0 188 58.8ZM36 128a92 92 0 1 1 92 92a92.1 92.1 0 0 1-92-92Z"/></svg>
                                         <span class="absolute bottom-0 right-0 block h-3 w-3 rounded-full bg-green-500 ring-2 ring-slate-800"></span>
                                     </div>
                                     <div>
-                                        <h4 class="font-bold text-white">Plumbing Demo Bot</h4>
+                                        <h4 class="font-bold text-white">Your Custom Demo Bot</h4>
                                         <p class="text-sm text-slate-400">Online</p>
                                     </div>
                                 </div>
@@ -192,21 +240,13 @@
                                 </button>
                             </div>
                             <div id="chat-messages" class="p-6 h-80 overflow-y-auto flex flex-col space-y-4">
-                                <!-- Chat messages will be appended here -->
-                                <div class="flex items-start space-x-3">
-                                    <div class="bg-sky-500/20 text-sky-300 p-2 rounded-full flex-shrink-0">
-                                        <i data-lucide="bot" class="w-5 h-5"></i>
-                                    </div>
-                                    <div class="liquid-glass px-4 py-3 rounded-2xl rounded-bl-none">
-                                        <p class="text-white">Hello! I'm the Redbonnets AI demo bot. To demonstrate, let's pretend I'm managing a business called "AquaFlow Plumbers". How can I help you today?</p>
-                                    </div>
-                                </div>
+                                <!-- Initial AI welcome message will be loaded dynamically from backend -->
                             </div>
                             <div class="p-4 border-t border-white/10">
                                 <div class="relative">
-                                    <input id="chat-input" type="text" placeholder="Ask about services, pricing, or appointments..." class="w-full bg-slate-900/50 border border-slate-700 rounded-full py-3 pl-5 pr-14 text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                                    <input id="chat-input" type="text" placeholder="Ask about their services, products, or contact info..." class="w-full bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:ring-indigo-500 focus:border-indigo-500">
                                     <button id="send-chat-btn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-indigo-600 w-10 h-10 rounded-full flex items-center justify-center hover:bg-indigo-700 transition-colors">
-                                        <i data-lucide="send" class="w-5 h-5 text-white"></i>
+                                        <i data-lucide="send" class="w-5 h-5"></i>
                                     </button>
                                 </div>
                             </div>
@@ -216,14 +256,14 @@
             </div>
         </section>
 
-        <!-- CTA Section -->
+        <!-- CTA Section: Call to action for consultation -->
         <section id="contact" class="py-20 md:py-28 cta-gradient">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-white">Ready to Transform Your Business?</h2>
                 <p class="max-w-2xl mx-auto mt-4 text-slate-400 mb-8">
                     Stop letting tedious tasks slow you down. Let Redbonnets AI handle the busywork, so you can focus on growth. Schedule a free, no-obligation consultation today.
                 </p>
-                <a href="#" class="bg-white text-slate-900 px-8 py-4 rounded-full font-semibold hover:bg-slate-200 transition-transform hover:scale-105 inline-block">
+                <a href="#showcase" class="bg-white text-slate-900 px-8 py-4 rounded-full font-semibold hover:bg-slate-200 transition-transform hover:scale-105 inline-block">
                     Book a Free Consultation
                 </a>
             </div>
@@ -231,12 +271,13 @@
 
     </main>
 
-    <!-- Footer -->
+    <!-- Footer Section -->
     <footer class="border-t border-white/10 mt-20">
         <div class="container mx-auto px-6 py-8">
             <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
                 <div>
                     <a href="#" class="flex items-center justify-center md:justify-start space-x-2 mb-4">
+                        <!-- Footer logo SVG -->
                         <svg width="32" height="32" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#4F46E5" d="M128 24a104 104 0 0 0-91.5 155.8a103.9 103.9 0 0 0 183 0A104 104 0 0 0 128 24m-12.7 41.8a11.9 11.9 0 0 1 12.1-1.1l.6.3l64 36.9a12 12 0 0 1 6 10.4v73.8a12 12 0 0 1-6 10.4l-64 36.9a12 12 0 0 1-12.7-10.7V76.5a12.3 12.3 0 0 1 .6-4.7m-20.6 8.5a12 12 0 0 1 12.1-1.1l.6.3l64 36.9a12 12 0 0 1 6 10.4v19.4a12 12 0 0 1-4.2 8.9L124 180.4a12 12 0 0 1-18.1-9.3V86.8a12 12 0 0 1 6.6-10.7l.6-.3Z"/></svg>
                         <span class="text-lg font-bold text-white">Redbonnets AI</span>
                     </a>
@@ -262,8 +303,8 @@
         </div>
     </footer>
 
-
     <script>
+        // Initialize Lucide icons
         lucide.createIcons();
 
         // Mobile Menu Toggle
@@ -280,8 +321,7 @@
             }
         });
 
-
-        // Header background on scroll
+        // Header background change on scroll
         const header = document.getElementById('header');
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
@@ -293,78 +333,188 @@
             }
         });
 
-        // Chatbot initiation logic
-        const startChatBtn = document.getElementById('start-chat-btn-placeholder');
-        const chatbotWindow = document.getElementById('chatbot-window');
+        // Chatbot transition logic and form submission handling
         const formContainer = document.getElementById('form-container');
+        const aiDemoForm = document.getElementById('ai-demo-form');
+        const formSubmissionMessage = document.getElementById('form-submission-message');
+        const chatbotWindow = document.getElementById('chatbot-window');
+        const chatbotLoadingState = document.getElementById('chatbot-loading-state');
+        const actualChatbotUI = document.getElementById('actual-chatbot-ui');
         const closeChatBtn = document.getElementById('close-chat-btn');
         const showcaseSection = document.getElementById('showcase');
+        const chatMessages = document.getElementById('chat-messages');
 
-        startChatBtn.addEventListener('click', () => {
-            // In a real scenario, you'd validate the form here first.
-            // For this demo, we'll just show the chatbot.
-            formContainer.classList.add('hidden');
-            chatbotWindow.classList.remove('hidden');
+        let currentSessionId = null; // Store the session ID for the current chat
+
+        // Function to show loading state and then chatbot UI
+        async function initiateChatbotDemo(sessionId, initialMessage) {
+            currentSessionId = sessionId; // Store the session ID
+            formContainer.classList.add('hidden'); // Hide the form
+            chatbotWindow.classList.remove('hidden'); // Show the chatbot window container
+
+            // Show loading spinner
+            chatbotLoadingState.style.display = 'block';
+            actualChatbotUI.style.display = 'none';
+            chatMessages.innerHTML = ''; // Clear previous messages
+
+            // Animate chatbot window in
             setTimeout(() => {
                 chatbotWindow.classList.remove('opacity-0', 'scale-95');
                 chatbotWindow.classList.add('opacity-100', 'scale-100');
             }, 10);
             
-             // Scroll to the chatbot window
-             showcaseSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            showcaseSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+            // Simulate backend processing time for a more realistic demo
+            // This delay should be removed once your n8n workflow is fast enough
+            await new Promise(resolve => setTimeout(resolve, 2000)); // 2-second delay
+
+            if (initialMessage) {
+                appendMessage(initialMessage, 'ai');
+                // Hide loading, show actual chatbot UI
+                chatbotLoadingState.style.display = 'none';
+                actualChatbotUI.style.display = 'block';
+            } else {
+                appendMessage("Error: Could not initialize chatbot. Please try again.", 'ai');
+                chatbotLoadingState.style.display = 'none';
+                actualChatbotUI.style.display = 'block';
+            }
+        }
+
+        // Handle form submission to n8n webhook
+        aiDemoForm.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent default form submission
+
+            formSubmissionMessage.style.display = 'block';
+            formSubmissionMessage.className = 'mt-4 text-center text-sm text-slate-400';
+            formSubmissionMessage.textContent = 'Analyzing your website and preparing your custom AI demo...';
+
+            const formData = new FormData(aiDemoForm);
+            const data = Object.fromEntries(formData.entries());
+
+            try {
+                // IMPORTANT: This is the webhook URL for initiating the demo.
+                const response = await fetch('https://redbonnets1.app.n8n.cloud/webhook/163b1ae3-f4a4-4f45-ac8a-f2f4dcfccf5a', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const result = await response.json();
+
+                if (result.sessionId && result.initialMessage) {
+                    formSubmissionMessage.textContent = ''; // Clear message
+                    formSubmissionMessage.style.display = 'none';
+                    initiateChatbotDemo(result.sessionId, result.initialMessage);
+                } else {
+                    formSubmissionMessage.className = 'mt-4 text-center text-sm text-red-500';
+                    formSubmissionMessage.textContent = 'Error: Could not start demo. Please check your inputs.';
+                    console.error('n8n webhook response missing session ID or initial message:', result);
+                }
+            } catch (error) {
+                console.error('Form submission error to n8n webhook:', error);
+                formSubmissionMessage.className = 'mt-4 text-center text-sm text-red-500';
+                formSubmissionMessage.textContent = 'An error occurred. Please try again later.';
+            }
         });
         
         closeChatBtn.addEventListener('click', () => {
-            chatbotWindow.classList.add('opacity-0', 'scale-95');
-             setTimeout(() => {
-                chatbotWindow.classList.add('hidden');
-                formContainer.classList.remove('hidden');
-            }, 500);
+            chatbotWindow.classList.add('opacity-0', 'scale-95'); // Animate chatbot out
+            setTimeout(() => {
+                chatbotWindow.classList.add('hidden'); // Hide chatbot completely after animation
+                formContainer.classList.remove('hidden'); // Show the form again
+                currentSessionId = null; // Clear session ID
+                chatMessages.innerHTML = ''; // Clear chat messages
+                aiDemoForm.reset(); // Reset the form
+                formSubmissionMessage.style.display = 'none'; // Hide submission message
+            }, 500); // Matches transition duration
         });
+
+        // Helper function to append messages to the chat UI
+        function appendMessage(text, sender) {
+            const messageEl = document.createElement('div');
+            messageEl.className = `flex items-start space-x-3 ${sender === 'user' ? 'justify-end' : 'chat-bubble'}`;
+            const avatarHtml = sender === 'user'
+                ? `<div class="bg-slate-700 text-slate-300 p-2 rounded-full flex-shrink-0"><i data-lucide="user" class="w-5 h-5"></i></div>`
+                : `<div class="bg-sky-500/20 text-sky-300 p-2 rounded-full flex-shrink-0"><i data-lucide="bot" class="w-5 h-5"></i></div>`;
+            const messageBubbleClass = sender === 'user' ? 'bg-indigo-600/80 rounded-br-none' : 'liquid-glass rounded-bl-none';
+            messageEl.innerHTML = `
+                ${sender === 'user' ? '' : avatarHtml}
+                <div class="${messageBubbleClass} px-4 py-3 rounded-2xl max-w-[80%]">
+                    <p class="text-white">${text}</p>
+                </div>
+                ${sender === 'user' ? avatarHtml : ''}
+            `;
+            chatMessages.appendChild(messageEl);
+            lucide.createIcons(); // Re-render Lucide icons for new elements
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
+        }
 
         // Chatbot conversation logic
         const chatInput = document.getElementById('chat-input');
         const sendChatBtn = document.getElementById('send-chat-btn');
-        const chatMessages = document.getElementById('chat-messages');
 
-        const handleSendChat = () => {
+        const handleSendChat = async () => {
             const userMessage = chatInput.value.trim();
-            if (!userMessage) return;
+            if (!userMessage || !currentSessionId) return;
 
-            // Display user message
-            const userMessageEl = document.createElement('div');
-            userMessageEl.className = 'flex items-start space-x-3 justify-end';
-            userMessageEl.innerHTML = `
-                <div class="bg-indigo-600/80 px-4 py-3 rounded-2xl rounded-br-none">
-                    <p class="text-white">${userMessage}</p>
+            appendMessage(userMessage, 'user'); // Display user message
+            chatInput.value = ''; // Clear input field
+
+            // Indicate thinking state for AI
+            const thinkingMessageEl = document.createElement('div');
+            thinkingMessageEl.id = 'ai-thinking';
+            thinkingMessageEl.className = 'flex items-start space-x-3 chat-bubble';
+            thinkingMessageEl.innerHTML = `
+                <div class="bg-sky-500/20 text-sky-300 p-2 rounded-full flex-shrink-0">
+                    <i data-lucide="bot" class="w-5 h-5"></i>
                 </div>
-                <div class="bg-slate-700 text-slate-300 p-2 rounded-full flex-shrink-0">
-                    <i data-lucide="user" class="w-5 h-5"></i>
+                <div class="liquid-glass px-4 py-3 rounded-2xl rounded-bl-none">
+                    <p class="text-white"><em>Typing...</em></p>
                 </div>
             `;
-            chatMessages.appendChild(userMessageEl);
+            chatMessages.appendChild(thinkingMessageEl);
             lucide.createIcons();
-            
-            chatInput.value = '';
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
-            // AI response (simple simulation)
-            setTimeout(() => {
-                const aiResponse = getAIResponse(userMessage);
-                const aiMessageEl = document.createElement('div');
-                aiMessageEl.className = 'flex items-start space-x-3 chat-bubble';
-                aiMessageEl.innerHTML = `
-                    <div class="bg-sky-500/20 text-sky-300 p-2 rounded-full flex-shrink-0">
-                        <i data-lucide="bot" class="w-5 h-5"></i>
-                    </div>
-                    <div class="liquid-glass px-4 py-3 rounded-2xl rounded-bl-none">
-                        <p class="text-white">${aiResponse}</p>
-                    </div>
-                `;
-                chatMessages.appendChild(aiMessageEl);
-                lucide.createIcons();
-                chatMessages.scrollTop = chatMessages.scrollHeight;
-            }, 1500);
+            try {
+                // IMPORTANT: Replace 'YOUR_N8N_CHAT_API_URL' with your n8n workflow's endpoint for ongoing chat
+                // This will likely be a DIFFERENT webhook URL than the one for initial demo setup.
+                const response = await fetch('YOUR_N8N_CHAT_API_URL', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ sessionId: currentSessionId, message: userMessage })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+
+                const data = await response.json();
+
+                // Remove thinking message
+                const oldThinkingMessage = document.getElementById('ai-thinking');
+                if (oldThinkingMessage) {
+                    oldThinkingMessage.remove();
+                }
+
+                if (data.reply) {
+                    appendMessage(data.reply, 'ai');
+                } else {
+                    appendMessage("Sorry, I couldn't get a response from the AI at this time.", 'ai');
+                }
+            } catch (error) {
+                console.error('Error sending message to n8n chat API:', error);
+                const oldThinkingMessage = document.getElementById('ai-thinking');
+                if (oldThinkingMessage) {
+                    oldThinkingMessage.remove();
+                }
+                appendMessage("There was an issue processing your request. Please try again.", 'ai');
+            }
         };
         
         sendChatBtn.addEventListener('click', handleSendChat);
@@ -373,28 +523,6 @@
                 handleSendChat();
             }
         });
-
-
-        // Simulated AI responses
-        function getAIResponse(message) {
-            message = message.toLowerCase();
-            if (message.includes('price') || message.includes('cost') || message.includes('how much')) {
-                return "For AquaFlow Plumbers, our standard service call-out fee is $95, which includes the first 30 minutes of diagnostics. After that, we bill at $120 per hour, plus materials. Does that sound fair?";
-            }
-            if (message.includes('appointment') || message.includes('book') || message.includes('schedule')) {
-                return "I can certainly help with that. What day and time works best for you? We have availability tomorrow afternoon between 1 PM and 4 PM.";
-            }
-            if (message.includes('emergency') || message.includes('leak')) {
-                return "I understand this is urgent. I can dispatch an emergency technician to you right away. Can you please confirm your address?";
-            }
-            if (message.includes('services')) {
-                return "AquaFlow Plumbers offers a full range of services, including drain cleaning, water heater repair and installation, leak detection, and full-service remodeling. What are you looking for today?";
-            }
-             if (message.includes('thank')) {
-                return "You're very welcome! Is there anything else I can assist you with for AquaFlow Plumbers today?";
-            }
-            return "That's a great question. As an AI, I can access a knowledge base to provide detailed answers. For example, I could tell you the pros and cons of a tankless water heater. Try asking me another question about plumbing services!";
-        }
 
     </script>
 </body>

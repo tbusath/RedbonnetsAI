@@ -217,38 +217,42 @@
 
                     <!-- Chatbot Window (Initially Hidden) -->
                     <div id="chatbot-window" class="lg:col-span-2 mt-16 opacity-0 transform scale-95 hidden">
-                         <div class="text-center mb-8" id="chatbot-loading-state">
-                            <div class="spinner mx-auto mb-4"></div>
-                            <p class="text-lg text-slate-400">Preparing your personalized AI demo...</p>
-                            <p class="text-sm text-slate-500">This might take a moment as we analyze your website data.</p>
-                        </div>
-                        <div class="liquid-glass rounded-3xl max-w-4xl mx-auto" id="actual-chatbot-ui" style="display: none;">
-                            <div class="p-4 border-b border-white/10 flex items-center justify-between">
-                                <div class="flex items-center space-x-3">
-                                    <div class="relative">
-                                        <!-- AI bot icon -->
-                                        <svg class="w-10 h-10 text-sky-400" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M152.23 203.4a15.91 15.91 0 0 1-11.31-4.68l-32.2-32.2a15.86 15.86 0 0 1 0-22.62l32.2-32.2a16 16 0 0 1 22.62 22.62L131.33 160l32.21 32.2a16 16 0 0 1-11.31 21.2Zm-52.46 0a16 16 0 0 1-11.32-21.2l32.21-32.2l-32.21-32.2a16 16 0 0 1 22.63-22.62l32.2 32.2a15.86 15.86 0 0 1 0 22.62l-32.2 32.2a15.91 15.91 0 0 1-11.31 4.68Zm88.23-144.6a100 100 0 1 0-141.42 141.42A100 100 0 1 0 188 58.8ZM36 128a92 92 0 1 1 92 92a92.1 92.1 0 0 1-92-92Z"/></svg>
-                                        <span class="absolute bottom-0 right-0 block h-3 w-3 rounded-full bg-green-500 ring-2 ring-slate-800"></span>
-                                    </div>
-                                    <div>
-                                        <h4 class="font-bold text-white">Your Custom Demo Bot</h4>
-                                        <p class="text-sm text-slate-400">Online</p>
-                                    </div>
-                                </div>
-                                <button id="close-chat-btn" class="p-2 rounded-full hover:bg-white/10">
-                                    <i data-lucide="x" class="w-5 h-5"></i>
-                                </button>
-                            </div>
-                            <div id="chat-messages" class="p-6 h-80 overflow-y-auto flex flex-col space-y-4">
-                                <!-- Initial AI welcome message will be loaded dynamically from backend -->
-                            </div>
-                            <div class="p-4 border-t border-white/10">
+                         <div class="p-4 border-b border-white/10 flex items-center justify-between">
+                            <div class="flex items-center space-x-3">
                                 <div class="relative">
-                                    <input id="chat-input" type="text" placeholder="Ask about their services, products, or contact info..." class="w-full bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:ring-indigo-500 focus:border-indigo-500">
-                                    <button id="send-chat-btn" class="absolute right-2 top-1/2 -translate-y-1/2 bg-indigo-600 w-10 h-10 rounded-full flex items-center justify-center hover:bg-indigo-700 transition-colors">
-                                        <i data-lucide="send" class="w-5 h-5"></i>
-                                    </button>
+                                    <!-- AI bot icon -->
+                                    <svg class="w-10 h-10 text-sky-400" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M152.23 203.4a15.91 15.91 0 0 1-11.31-4.68l-32.2-32.2a15.86 15.86 0 0 1 0-22.62l32.2-32.2a16 16 0 0 1 22.62 22.62L131.33 160l32.21 32.2a16 16 0 0 1-11.31 21.2Zm-52.46 0a16 16 0 0 1-11.32-21.2l32.21-32.2l-32.21-32.2a16 16 0 0 1 22.63-22.62l32.2 32.2a15.86 15.86 0 0 1 0 22.62l-32.2 32.2a15.91 15.91 0 0 1-11.31 4.68Zm88.23-144.6a100 100 0 1 0-141.42 141.42A100 100 0 1 0 188 58.8ZM36 128a92 92 0 1 1 92 92a92.1 92.1 0 0 1-92-92Z"/></svg>
+                                    <span class="absolute bottom-0 right-0 block h-3 w-3 rounded-full bg-green-500 ring-2 ring-slate-800"></span>
                                 </div>
+                                <div>
+                                    <h4 class="font-bold text-white">Your Custom Demo Bot</h4>
+                                    <p class="text-sm text-slate-400">Online</p>
+                                </div>
+                            </div>
+                            <button id="close-chat-btn" class="p-2 rounded-full hover:bg-white/10">
+                                <i data-lucide="x" class="w-5 h-5"></i>
+                            </button>
+                        </div>
+                        <div id="chat-messages" class="p-6 h-80 overflow-y-auto flex flex-col space-y-4">
+                            <!-- Initial AI welcome message will be loaded dynamically from backend -->
+                            <!-- Placeholder for initial AI message for debugging -->
+                            <div class="flex items-start space-x-3 chat-bubble">
+                                <div class="bg-sky-500/20 text-sky-300 p-2 rounded-full flex-shrink-0">
+                                    <i data-lucide="bot" class="w-5 h-5"></i>
+                                </div>
+                                <div class="liquid-glass px-4 py-3 rounded-2xl rounded-bl-none">
+                                    <p class="text-white">Loading personalized AI demo...</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-4 border-t border-white/10">
+                            <div class="relative flex items-center">
+                                <input id="chat-input" type="text" placeholder="Ask about their services, products, or contact info..."
+                                    class="flex-grow p-3 pr-12 rounded-md bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:ring-indigo-500 focus:border-indigo-500 outline-none">
+                                <button id="send-chat-btn"
+                                    class="absolute right-2 top-1/2 -translate-y-1/2 bg-indigo-600 w-10 h-10 rounded-full flex items-center justify-center hover:bg-indigo-700 transition-colors">
+                                    <i data-lucide="send" class="w-5 h-5 text-white"></i>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -352,10 +356,9 @@
             formContainer.classList.add('hidden'); // Hide the form
             chatbotWindow.classList.remove('hidden'); // Show the chatbot window container
 
-            // Show loading spinner
-            chatbotLoadingState.style.display = 'block';
-            actualChatbotUI.style.display = 'none';
-            chatMessages.innerHTML = ''; // Clear previous messages
+            // Hide loading state and show actual chatbot UI immediately
+            chatbotLoadingState.style.display = 'none';
+            actualChatbotUI.style.display = 'block';
 
             // Animate chatbot window in
             setTimeout(() => {
@@ -365,19 +368,23 @@
             
             showcaseSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-            // Simulate backend processing time for a more realistic demo
-            // This delay should be removed once your n8n workflow is fast enough
-            await new Promise(resolve => setTimeout(resolve, 2000)); // 2-second delay
+            // Add a temporary loading message until the *actual* initial AI message arrives
+            chatMessages.innerHTML = ''; // Clear previous messages
+            appendMessage("Loading personalized AI demo...", 'ai'); // Temporary loading message
 
+            // Delay for demo realism, remove in production
+            await new Promise(resolve => setTimeout(resolve, 2000)); // 2-second delay for perceived "analysis"
+
+            // Now, append the actual initial AI message
             if (initialMessage) {
+                // Remove the temporary loading message
+                const tempLoadingMessage = chatMessages.querySelector('p'); // Assuming it's the only p tag for now
+                if (tempLoadingMessage && tempLoadingMessage.textContent === "Loading personalized AI demo...") {
+                    tempLoadingMessage.parentElement.parentElement.remove(); // Remove the entire message div
+                }
                 appendMessage(initialMessage, 'ai');
-                // Hide loading, show actual chatbot UI
-                chatbotLoadingState.style.display = 'none';
-                actualChatbotUI.style.display = 'block';
             } else {
-                appendMessage("Error: Could not initialize chatbot. Please try again.", 'ai');
-                chatbotLoadingState.style.display = 'none';
-                actualChatbotUI.style.display = 'block';
+                appendMessage("Error: Could not initialize chatbot with a welcome message. Please try again.", 'ai');
             }
         }
 
@@ -392,6 +399,11 @@
             const formData = new FormData(aiDemoForm);
             const data = Object.fromEntries(formData.entries());
 
+            // Show loading spinner while fetching
+            chatbotWindow.classList.remove('hidden');
+            chatbotLoadingState.style.display = 'block';
+            actualChatbotUI.style.display = 'none'; // Hide the chat UI until initial message
+
             try {
                 // IMPORTANT: This is the webhook URL for initiating the demo.
                 // UPDATED to use the /webhook-test/ URL for testing
@@ -400,6 +412,9 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
+
+                // Hide loading spinner regardless of success/failure for the form submission part
+                chatbotLoadingState.style.display = 'none';
 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -413,13 +428,18 @@
                     initiateChatbotDemo(result.sessionId, result.initialMessage);
                 } else {
                     formSubmissionMessage.className = 'mt-4 text-center text-sm text-red-500';
-                    formSubmissionMessage.textContent = 'Error: Could not start demo. Please check your inputs.';
+                    formSubmissionMessage.textContent = 'Error: Could not start demo. Please check your inputs or n8n workflow response.';
                     console.error('n8n webhook response missing session ID or initial message:', result);
+                    chatbotWindow.classList.add('hidden'); // Hide chat window if demo couldn't start
+                    formContainer.classList.remove('hidden'); // Show form again
                 }
             } catch (error) {
                 console.error('Form submission error to n8n webhook:', error);
                 formSubmissionMessage.className = 'mt-4 text-center text-sm text-red-500';
                 formSubmissionMessage.textContent = 'An error occurred. Please try again later.';
+                chatbotLoadingState.style.display = 'none'; // Hide spinner
+                chatbotWindow.classList.add('hidden'); // Hide chat window if error
+                formContainer.classList.remove('hidden'); // Show form again
             }
         });
         

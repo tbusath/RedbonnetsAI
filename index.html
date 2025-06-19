@@ -406,8 +406,8 @@
 
             try {
                 // IMPORTANT: This is the webhook URL for initiating the demo.
-                // UPDATED to use the /webhook-test/ URL for testing
-                const response = await fetch('https://redbonnets1.app.n8n.cloud/webhook-test/163b1ae3-f4a4-4f45-ac8a-f2f4dcfccf5a', {
+                // UPDATED to use the production URL provided by the user.
+                const response = await fetch('https://redbonnets1.app.n8n.cloud/webhook/163b1ae3-f4a4-4f45-ac8a-f2f4dcfccf5a', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
@@ -477,8 +477,8 @@
 
         // Chatbot conversation logic
         const chatInput = document.getElementById('chat-input');
-        const sendChatBtn = document.getElementById('send-chat-btn');
-
+        const sendChatBtn = document.getElementById('send-chat-btn'); // Corrected assignment for sendChatBtn
+        
         const handleSendChat = async () => {
             const userMessage = chatInput.value.trim();
             if (!userMessage || !currentSessionId) return;

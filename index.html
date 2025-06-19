@@ -368,20 +368,16 @@
             
             showcaseSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-            // Add a temporary loading message until the *actual* initial AI message arrives
-            chatMessages.innerHTML = ''; // Clear previous messages
-            appendMessage("Loading personalized AI demo...", 'ai', 'temp-loading-message'); // Added unique ID
+            // Clear messages before adding the new ones (including temporary loading message)
+            chatMessages.innerHTML = '';
+            appendMessage("Loading personalized AI demo...", 'ai'); // No need for ID if we clear innerHTML
 
             // Delay for demo realism, remove in production
             await new Promise(resolve => setTimeout(resolve, 2000)); // 2-second delay for perceived "analysis"
 
             // Now, append the actual initial AI message
             if (initialMessage) {
-                // Remove the temporary loading message by ID
-                const tempLoadingMessageEl = document.getElementById('temp-loading-message');
-                if (tempLoadingMessageEl) { // Check if element exists before attempting to remove
-                    tempLoadingMessageEl.remove(); 
-                }
+                chatMessages.innerHTML = ''; // Clear temporary loading message before adding actual message
                 appendMessage(initialMessage, 'ai');
             } else {
                 appendMessage("Error: Could not initialize chatbot with a welcome message. Please try again.", 'ai');
@@ -406,8 +402,8 @@
 
             try {
                 // IMPORTANT: This is the webhook URL for initiating the demo.
-                // UPDATED to use the production URL provided by the user.
-                const response = await fetch('https://redbonnets1.app.n8n.cloud/webhook/163b1ae3-f4a4-4f45-ac8a-f2f4dcfccf5a', {
+                // Reverted to the test URL for debugging as requested.
+                const response = await fetch('https://redbonnets1.app.n8n.cloud/webhook-test/163b1ae3-f4a4-4f45-ac8a-f2f4dcfccf5a', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
@@ -456,13 +452,11 @@
         });
 
         // Helper function to append messages to the chat UI
-        // Added optional messageId parameter
-        function appendMessage(text, sender, messageId = null) {
+        // Removed optional messageId parameter as innerHTML is now cleared
+        function appendMessage(text, sender) {
             const messageEl = document.createElement('div');
             messageEl.className = `flex items-start space-x-3 ${sender === 'user' ? 'justify-end' : 'chat-bubble'}`;
-            if (messageId) {
-                messageEl.id = messageId; // Set the ID if provided
-            }
+            // Removed messageId logic as it's no longer needed for removal
 
             const avatarHtml = sender === 'user'
                 ? `<div class="bg-slate-700 text-slate-300 p-2 rounded-full flex-shrink-0"><i data-lucide="user" class="w-5 h-5"></i></div>`

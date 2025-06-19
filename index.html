@@ -370,17 +370,17 @@
 
             // Add a temporary loading message until the *actual* initial AI message arrives
             chatMessages.innerHTML = ''; // Clear previous messages
-            appendMessage("Loading personalized AI demo...", 'ai'); // Temporary loading message
+            appendMessage("Loading personalized AI demo...", 'ai', 'temp-loading-message'); // Added unique ID
 
             // Delay for demo realism, remove in production
             await new Promise(resolve => setTimeout(resolve, 2000)); // 2-second delay for perceived "analysis"
 
             // Now, append the actual initial AI message
             if (initialMessage) {
-                // Remove the temporary loading message
-                const tempLoadingMessage = chatMessages.querySelector('p'); // Assuming it's the only p tag for now
-                if (tempLoadingMessage && tempLoadingMessage.textContent === "Loading personalized AI demo...") {
-                    tempLoadingMessage.parentElement.parentElement.remove(); // Remove the entire message div
+                // Remove the temporary loading message by ID
+                const tempLoadingMessageEl = document.getElementById('temp-loading-message');
+                if (tempLoadingMessageEl) { // Check if element exists before attempting to remove
+                    tempLoadingMessageEl.remove(); 
                 }
                 appendMessage(initialMessage, 'ai');
             } else {
@@ -456,9 +456,14 @@
         });
 
         // Helper function to append messages to the chat UI
-        function appendMessage(text, sender) {
+        // Added optional messageId parameter
+        function appendMessage(text, sender, messageId = null) {
             const messageEl = document.createElement('div');
             messageEl.className = `flex items-start space-x-3 ${sender === 'user' ? 'justify-end' : 'chat-bubble'}`;
+            if (messageId) {
+                messageEl.id = messageId; // Set the ID if provided
+            }
+
             const avatarHtml = sender === 'user'
                 ? `<div class="bg-slate-700 text-slate-300 p-2 rounded-full flex-shrink-0"><i data-lucide="user" class="w-5 h-5"></i></div>`
                 : `<div class="bg-sky-500/20 text-sky-300 p-2 rounded-full flex-shrink-0"><i data-lucide="bot" class="w-5 h-5"></i></div>`;
@@ -477,7 +482,7 @@
 
         // Chatbot conversation logic
         const chatInput = document.getElementById('chat-input');
-        const sendChatBtn = document.getElementById('send-chat-btn'); // Corrected assignment for sendChatBtn
+        const sendChatBtn = document.getElementById('send-chat-btn'); 
         
         const handleSendChat = async () => {
             const userMessage = chatInput.value.trim();

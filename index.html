@@ -449,7 +449,7 @@
                 ${sender === 'user' ? avatarHtml : ''}
             `;
             chatMessages.appendChild(messageEl);
-            lucide.createIcons(); // Re-render Lucide icons for new elements
+            // lucide.createIcons(); // TEMPORARILY COMMENTED OUT FOR DEBUGGING TypeError
             chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
         }
 
@@ -477,7 +477,7 @@
                 </div>
             `;
             chatMessages.appendChild(thinkingMessageEl);
-            lucide.createIcons();
+            // lucide.createIcons(); // TEMPORARILY COMMENTED OUT FOR DEBUGGING TypeError
             chatMessages.scrollTop = chatMessages.scrollHeight;
 
             try {

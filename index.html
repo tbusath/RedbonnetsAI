@@ -300,7 +300,7 @@
     </footer>
 
     <script>
-        // Initialize Lucide icons
+        // Initialize Lucide icons for static elements (header, footer, etc.) once on page load
         lucide.createIcons();
 
         // Mobile Menu Toggle
@@ -437,9 +437,14 @@
             const messageEl = document.createElement('div');
             messageEl.className = `flex items-start space-x-3 ${sender === 'user' ? 'justify-end' : 'chat-bubble'}`;
             
+            // Directly embed SVG for user and bot icons
+            const userIconSvg = `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>`;
+            const botIconSvg = `<svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 11h1"/><path d="M8 11h1"/></svg>`;
+
             const avatarHtml = sender === 'user'
-                ? `<div class="bg-slate-700 text-slate-300 p-2 rounded-full flex-shrink-0"><i data-lucide="user" class="w-5 h-5"></i></div>`
-                : `<div class="bg-sky-500/20 text-sky-300 p-2 rounded-full flex-shrink-0"><i data-lucide="bot" class="w-5 h-5"></i></div>`;
+                ? `<div class="bg-slate-700 text-slate-300 p-2 rounded-full flex-shrink-0">${userIconSvg}</div>`
+                : `<div class="bg-sky-500/20 text-sky-300 p-2 rounded-full flex-shrink-0">${botIconSvg}</div>`;
+            
             const messageBubbleClass = sender === 'user' ? 'bg-indigo-600/80 rounded-br-none' : 'liquid-glass rounded-bl-none';
             messageEl.innerHTML = `
                 ${sender === 'user' ? '' : avatarHtml}
@@ -449,7 +454,7 @@
                 ${sender === 'user' ? avatarHtml : ''}
             `;
             chatMessages.appendChild(messageEl);
-            // lucide.createIcons(); // TEMPORARILY COMMENTED OUT FOR DEBUGGING TypeError
+            // Removed lucide.createIcons() call here. Icons are now embedded directly as SVG.
             chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
         }
 
@@ -470,15 +475,16 @@
             thinkingMessageEl.className = 'flex items-start space-x-3 chat-bubble';
             thinkingMessageEl.innerHTML = `
                 <div class="bg-sky-500/20 text-sky-300 p-2 rounded-full flex-shrink-0">
-                    <i data-lucide="bot" class="w-5 h-5"></i>
+                    <!-- Bot icon SVG directly embedded for thinking message -->
+                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 11h1"/><path d="M8 11h1"/></svg>
                 </div>
                 <div class="liquid-glass px-4 py-3 rounded-2xl rounded-bl-none">
                     <p class="text-white"><em>Typing...</em></p>
                 </div>
             `;
             chatMessages.appendChild(thinkingMessageEl);
-            // lucide.createIcons(); // TEMPORARILY COMMENTED OUT FOR DEBUGGING TypeError
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+            // Removed lucide.createIcons() call here. Icons are now embedded directly as SVG.
+            chatMessages.scrollTop = chatMessages.CROLL_HEIGHT; // Ensure consistent scrolling to bottom
 
             try {
                 // IMPORTANT: Replace 'YOUR_N8N_CHAT_API_URL' with your n8n workflow's endpoint for ongoing chat

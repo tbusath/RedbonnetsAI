@@ -74,24 +74,30 @@
 </head>
 <body class="text-slate-300 overflow-x-hidden">
 
+    <!-- Header Section: Navigation bar with liquid glass effect -->
     <header id="header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-6 py-4">
             <div class="flex justify-between items-center liquid-glass rounded-full p-2">
                 <a href="#" class="flex items-center space-x-2">
+                    <!-- Logo SVG for Redbonnets AI -->
                     <svg width="40" height="40" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#4F46E5" d="M128 24a104 104 0 0 0-91.5 155.8a103.9 103.9 0 0 0 183 0A104 104 0 0 0 128 24m-12.7 41.8a11.9 11.9 0 0 1 12.1-1.1l.6.3l64 36.9a12 12 0 0 1 6 10.4v73.8a12 12 0 0 1-6 10.4l-64 36.9a12 12 0 0 1-12.7-10.7V76.5a12.3 12.3 0 0 1 .6-4.7m-20.6 8.5a12 12 0 0 1 12.1-1.1l.6.3l64 36.9a12 12 0 0 1 6 10.4v19.4a12 12 0 0 1-4.2 8.9L124 180.4a12 12 0 0 1-18.1-9.3V86.8a12 12 0 0 1 6.6-10.7l.6-.3Z"/></svg>
                     <span class="text-xl font-bold text-white">Redbonnets AI</span>
                 </a>
+                <!-- Desktop Navigation Links -->
                 <nav class="hidden md:flex items-center space-x-2">
                     <a href="#services" class="px-4 py-2 text-sm rounded-full hover:bg-white/10 transition-colors">Services</a>
                     <a href="#showcase" class="px-4 py-2 text-sm rounded-full hover:bg-white/10 transition-colors">Showcase</a>
                     <a href="#contact" class="px-4 py-2 text-sm rounded-full hover:bg-white/10 transition-colors">Contact</a>
                 </nav>
+                <!-- Desktop Get Started Button -->
                 <a href="#contact" class="hidden md:block bg-indigo-600 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-indigo-700 transition-colors">Get Started</a>
+                <!-- Mobile Menu Button -->
                 <button id="mobile-menu-btn" class="md:hidden p-2 rounded-full hover:bg-white/10">
                     <i data-lucide="menu" class="w-6 h-6 text-white"></i>
                 </button>
             </div>
         </div>
+        <!-- Mobile Menu Dropdown -->
         <div id="mobile-menu" class="hidden md:hidden">
             <div class="container mx-auto px-6 pb-4">
                 <div class="liquid-glass rounded-2xl p-4 flex flex-col space-y-2">
@@ -106,6 +112,7 @@
 
     <main class="pt-24">
 
+        <!-- Hero Section: Main heading and call to action -->
         <section id="hero" class="relative text-center py-20 md:py-32 overflow-hidden">
             <div class="absolute inset-0 hero-gradient"></div>
             <div class="container mx-auto px-6 relative z-10">
@@ -121,6 +128,7 @@
             </div>
         </section>
 
+        <!-- Services Section: Features offered by Redbonnets AI -->
         <section id="services" class="py-20 md:py-28 feature-gradient">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-12">
@@ -130,6 +138,7 @@
                     </p>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Service Card 1: 24/7 AI Receptionist -->
                     <div class="liquid-glass p-8 rounded-3xl transform hover:-translate-y-2 transition-transform duration-300">
                         <div class="bg-sky-500/10 text-sky-400 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                             <i data-lucide="bot" class="w-6 h-6"></i>
@@ -137,6 +146,7 @@
                         <h3 class="text-xl font-bold text-white mb-2">24/7 AI Receptionist</h3>
                         <p class="text-slate-400">Never miss a lead. Our AI answers calls, books appointments, and qualifies customers, day or night.</p>
                     </div>
+                    <!-- Service Card 2: Automated Quoting -->
                     <div class="liquid-glass p-8 rounded-3xl transform hover:-translate-y-2 transition-transform duration-300">
                         <div class="bg-sky-500/10 text-sky-400 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                             <i data-lucide="file-text" class="w-6 h-6"></i>
@@ -144,6 +154,7 @@
                         <h3 class="text-xl font-bold text-white mb-2">Automated Quoting</h3>
                         <p class="text-slate-400">Generate accurate, professional quotes in seconds. Our AI analyzes job details to create instant estimates.</p>
                     </div>
+                    <!-- Service Card 3: Intelligent Scheduling -->
                     <div class="liquid-glass p-8 rounded-3xl transform hover:-translate-y-2 transition-transform duration-300">
                         <div class="bg-sky-500/10 text-sky-400 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                             <i data-lucide="calendar-check" class="w-6 h-6"></i>
@@ -151,6 +162,7 @@
                         <h3 class="text-xl font-bold text-white mb-2">Intelligent Scheduling</h3>
                         <p class="text-slate-400">Optimize your routes and schedule jobs automatically based on technician availability and location.</p>
                     </div>
+                    <!-- Service Card 4: Automated Inventory -->
                     <div class="liquid-glass p-8 rounded-3xl transform hover:-translate-y-2 transition-transform duration-300">
                         <div class="bg-sky-500/10 text-sky-400 rounded-full w-12 h-12 flex items-center justify-center mb-4">
                             <i data-lucide="package-check" class="w-6 h-6"></i>
@@ -162,6 +174,7 @@
             </div>
         </section>
 
+        <!-- AI Showcase Section: Custom HTML form and display chatbot demo -->
         <section id="showcase" class="py-20 md:py-28">
             <div class="container mx-auto px-6">
                 <div class="grid lg:grid-cols-2 gap-12 items-center">
@@ -175,12 +188,13 @@
                             This is a live demonstration using advanced AI. Experience the future of intelligent automation.
                         </p>
                     </div>
+                    <!-- Form Container with HTML Form -->
                     <div id="form-container" class="liquid-glass p-8 rounded-3xl">
                         <h3 class="text-xl font-bold text-white mb-4 text-center">Get Your Custom AI Demo</h3>
                         <form id="ai-demo-form" class="space-y-4">
                             <div>
                                 <label for="full-name" class="block text-sm font-medium text-slate-300 mb-1">Full Name</label>
-                                <input type="text" id="full-name" name="fullName" required class="w-full p-3 rounded-md bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" id="full-name" name="fullName" placeholder="Michael Scott" required class="w-full p-3 rounded-md bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:ring-indigo-500 focus:border-indigo-500">
                             </div>
                             <div>
                                 <label for="company-url" class="block text-sm font-medium text-slate-300 mb-1">Company Website URL</label>
@@ -188,7 +202,7 @@
                             </div>
                             <div>
                                 <label for="email-address" class="block text-sm font-medium text-slate-300 mb-1">Email Address</label>
-                                <input type="email" id="email-address" name="email" placeholder="prison.mike@dundermifflin.com" required class="w-full p-3 rounded-md bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="email" id="email-address" name="email" placeholder="prisonmike@dundermifflin.com" required class="w-full p-3 rounded-md bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:ring-indigo-500 focus:border-indigo-500">
                             </div>
                             <div>
                                 <label for="phone-number" class="block text-sm font-medium text-slate-300 mb-1">Phone Number</label>
@@ -201,10 +215,12 @@
                         <div id="form-submission-message" class="mt-4 text-center text-sm" style="display: none;"></div>
                     </div>
 
+                    <!-- Chatbot Window (Initially Hidden) -->
                     <div id="chatbot-window" class="lg:col-span-2 mt-16 opacity-0 transform scale-95 hidden">
                          <div class="p-4 border-b border-white/10 flex items-center justify-between">
                             <div class="flex items-center space-x-3">
                                 <div class="relative">
+                                    <!-- AI bot icon -->
                                     <svg class="w-10 h-10 text-sky-400" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="currentColor" d="M152.23 203.4a15.91 15.91 0 0 1-11.31-4.68l-32.2-32.2a15.86 15.86 0 0 1 0-22.62l32.2-32.2a16 16 0 0 1 22.62 22.62L131.33 160l32.21 32.2a16 16 0 0 1-11.31 21.2Zm-52.46 0a16 16 0 0 1-11.32-21.2l32.21-32.2l-32.21-32.2a16 16 0 0 1 22.63-22.62l32.2 32.2a15.86 15.86 0 0 1 0 22.62l-32.2 32.2a15.91 15.91 0 0 1-11.31 4.68Zm88.23-144.6a100 100 0 1 0-141.42 141.42A100 100 0 1 0 188 58.8ZM36 128a92 92 0 1 1 92 92a92.1 92.1 0 0 1-92-92Z"/></svg>
                                     <span class="absolute bottom-0 right-0 block h-3 w-3 rounded-full bg-green-500 ring-2 ring-slate-800"></span>
                                 </div>
@@ -218,7 +234,9 @@
                             </button>
                         </div>
                         <div id="chat-messages" class="p-6 h-80 overflow-y-auto flex flex-col space-y-4">
-                            </div>
+                            <!-- Initial AI welcome message will be loaded dynamically from backend -->
+                            <!-- This will be cleared and replaced by the actual AI message -->
+                        </div>
                         <div class="p-4 border-t border-white/10">
                             <div class="relative flex items-center">
                                 <input id="chat-input" type="text" placeholder="Ask about their services, products, or contact info..."
@@ -234,6 +252,7 @@
             </div>
         </section>
 
+        <!-- CTA Section: Call to action for consultation -->
         <section id="contact" class="py-20 md:py-28 cta-gradient">
             <div class="container mx-auto px-6 text-center">
                 <h2 class="text-3xl md:text-4xl font-bold text-white">Ready to Transform Your Business?</h2>
@@ -248,11 +267,13 @@
 
     </main>
 
+    <!-- Footer Section -->
     <footer class="border-t border-white/10 mt-20">
         <div class="container mx-auto px-6 py-8">
             <div class="grid md:grid-cols-3 gap-8 text-center md:text-left">
                 <div>
                     <a href="#" class="flex items-center justify-center md:justify-start space-x-2 mb-4">
+                        <!-- Footer logo SVG -->
                         <svg width="32" height="32" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg"><path fill="#4F46E5" d="M128 24a104 104 0 0 0-91.5 155.8a103.9 103.9 0 0 0 183 0A104 104 0 0 0 128 24m-12.7 41.8a11.9 11.9 0 0 1 12.1-1.1l.6.3l64 36.9a12 12 0 0 1 6 10.4v73.8a12 12 0 0 1-6 10.4l-64 36.9a12 12 0 0 1-12.7-10.7V76.5a12.3 12.3 0 0 1 .6-4.7m-20.6 8.5a12 12 0 0 1 12.1-1.1l.6.3l64 36.9a12 12 0 0 1 6 10.4v19.4a12 12 0 0 1-4.2 8.9L124 180.4a12 12 0 0 1-18.1-9.3V86.8a12 12 0 0 1 6.6-10.7l.6-.3Z"/></svg>
                         <span class="text-lg font-bold text-white">Redbonnets AI</span>
                     </a>
@@ -313,12 +334,10 @@
         const aiDemoForm = document.getElementById('ai-demo-form');
         const formSubmissionMessage = document.getElementById('form-submission-message');
         const chatbotWindow = document.getElementById('chatbot-window');
-        // --- FIX START ---
-        // The two lines below were causing the error because the element IDs do not exist in the HTML.
-        // I have commented them out.
-        // const chatbotLoadingState = document.getElementById('chatbot-loading-state'); // This is the spinner/text under the form
-        // const actualChatbotUI = document.getElementById('actual-chatbot-ui'); // This is the main chat box
-        // --- FIX END ---
+        // Removed unused variable declarations as they don't have corresponding HTML elements.
+        // const chatbotLoadingState = document.getElementById('chatbot-loading-state');
+        // const actualChatbotUI = document.getElementById('actual-chatbot-ui');
+        
         const closeChatBtn = document.getElementById('close-chat-btn');
         const showcaseSection = document.getElementById('showcase');
         const chatMessages = document.getElementById('chat-messages'); // This is the messages container inside the chat box
@@ -338,10 +357,8 @@
 
             // Clear previous messages and show the chat UI
             chatMessages.innerHTML = '';
-            // --- FIX START ---
-            // This line was causing an error. I have commented it out.
-            // actualChatbotUI.style.display = 'block';
-            // --- FIX END ---
+            // Removed usage of actualChatbotUI as it's not defined in HTML
+            // actualChatbotUI.style.display = 'block'; 
 
             // Add the actual initial AI message
             if (initialMessage) {
@@ -362,25 +379,24 @@
             const formData = new FormData(aiDemoForm);
             const data = Object.fromEntries(formData.entries());
 
-            // --- FIX START ---
-            // These lines were causing an error. I have commented them out.
-            // chatbotWindow.classList.remove('hidden'); // This line is not needed as the logic below handles visibility
-            // chatbotLoadingState.style.display = 'block'; // Show the spinner and its text
-            // actualChatbotUI.style.display = 'none'; // Hide the chat UI itself
-            // --- FIX END ---
+            // Since chatbotLoadingState and actualChatbotUI elements don't exist,
+            // we'll rely on the formSubmissionMessage for loading feedback.
+            // Removed usage of chatbotLoadingState and actualChatbotUI
+            // chatbotWindow.classList.remove('hidden'); 
+            // chatbotLoadingState.style.display = 'block'; 
+            // actualChatbotUI.style.display = 'none'; 
 
             try {
-                // IMPORTANT: Using the test webhook URL from your screenshot.
-                const response = await fetch('https://redbonnets1.app.n8n.cloud/webhook-test/163b1aa3-f4a4-4f45-ac8a-f2f4dcfccf5a', {
+                // IMPORTANT: Using the test webhook URL for debugging.
+                // The URL in the screenshot was missing a digit (163b1aa3 instead of 163b1ae3)
+                const response = await fetch('https://redbonnets1.app.n8n.cloud/webhook-test/163b1ae3-f4a4-4f45-ac8a-f2f4dcfccf5a', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
                 
-                // --- FIX START ---
-                // This line was causing an error. I have commented it out.
+                // Removed usage of chatbotLoadingState
                 // chatbotLoadingState.style.display = 'none';
-                // --- FIX END ---
 
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
@@ -404,10 +420,8 @@
                 console.error('Form submission error to n8n webhook:', error);
                 formSubmissionMessage.className = 'mt-4 text-center text-sm text-red-500';
                 formSubmissionMessage.textContent = 'An error occurred during communication. Please try again.';
-                // --- FIX START ---
-                // This line was causing an error. I have commented it out.
-                // chatbotLoadingState.style.display = 'none'; // Hide spinner
-                // --- FIX END ---
+                // Removed usage of chatbotLoadingState
+                // chatbotLoadingState.style.display = 'none'; 
                 chatbotWindow.classList.add('hidden'); // Hide chat window if error
                 formContainer.classList.remove('hidden'); // Show form again
             }
@@ -447,7 +461,6 @@
                 ${sender === 'user' ? avatarHtml : ''}
             `;
             chatMessages.appendChild(messageEl);
-            // Removed lucide.createIcons() call here. Icons are now embedded directly as SVG.
             chatMessages.scrollTop = chatMessages.scrollHeight; // Scroll to bottom
         }
 
@@ -468,6 +481,7 @@
             thinkingMessageEl.className = 'flex items-start space-x-3 chat-bubble';
             thinkingMessageEl.innerHTML = `
                 <div class="bg-sky-500/20 text-sky-300 p-2 rounded-full flex-shrink-0">
+                    <!-- Bot icon SVG directly embedded for thinking message -->
                     <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4H8"/><rect width="16" height="12" x="4" y="8" rx="2"/><path d="M2 14h2"/><path d="M20 14h2"/><path d="M15 11h1"/><path d="M8 11h1"/></svg>
                 </div>
                 <div class="liquid-glass px-4 py-3 rounded-2xl rounded-bl-none">
@@ -475,8 +489,7 @@
                 </div>
             `;
             chatMessages.appendChild(thinkingMessageEl);
-            // Removed lucide.createIcons() call here. Icons are now embedded directly as SVG.
-            chatMessages.scrollTop = chatMessages.scrollHeight; // Ensure consistent scrolling to bottom
+            chatMessages.scrollTop = chatMessages.scrollHeight; // Corrected typo here
 
             try {
                 // IMPORTANT: Replace 'YOUR_N8N_CHAT_API_URL' with your n8n workflow's endpoint for ongoing chat

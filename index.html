@@ -194,7 +194,7 @@
                         <form id="ai-demo-form" class="space-y-4">
                             <div>
                                 <label for="full-name" class="block text-sm font-medium text-slate-300 mb-1">Full Name</label>
-                                <input type="text" id="full-name" name="fullName" required class="w-full p-3 rounded-md bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:ring-indigo-500 focus:border-indigo-500">
+                                <input type="text" id="full-name" name="fullName" placeholder="Michael Scott" required class="w-full p-3 rounded-md bg-slate-900/50 border border-slate-700 text-white placeholder-slate-500 focus:ring-indigo-500 focus:border-indigo-500">
                             </div>
                             <div>
                                 <label for="company-url" class="block text-sm font-medium text-slate-300 mb-1">Company Website URL</label>
@@ -235,15 +235,7 @@
                         </div>
                         <div id="chat-messages" class="p-6 h-80 overflow-y-auto flex flex-col space-y-4">
                             <!-- Initial AI welcome message will be loaded dynamically from backend -->
-                            <!-- Placeholder for initial AI message for debugging -->
-                            <div class="flex items-start space-x-3 chat-bubble">
-                                <div class="bg-sky-500/20 text-sky-300 p-2 rounded-full flex-shrink-0">
-                                    <i data-lucide="bot" class="w-5 h-5"></i>
-                                </div>
-                                <div class="liquid-glass px-4 py-3 rounded-2xl rounded-bl-none">
-                                    <p class="text-white">Loading personalized AI demo...</p>
-                                </div>
-                            </div>
+                            <!-- This will be cleared and replaced by the actual AI message -->
                         </div>
                         <div class="p-4 border-t border-white/10">
                             <div class="relative flex items-center">
@@ -342,42 +334,31 @@
         const aiDemoForm = document.getElementById('ai-demo-form');
         const formSubmissionMessage = document.getElementById('form-submission-message');
         const chatbotWindow = document.getElementById('chatbot-window');
-        const chatbotLoadingState = document.getElementById('chatbot-loading-state');
-        const actualChatbotUI = document.getElementById('actual-chatbot-ui');
+        const chatbotLoadingState = document.getElementById('chatbot-loading-state'); // This is the spinner/text under the form
+        const actualChatbotUI = document.getElementById('actual-chatbot-ui'); // This is the main chat box
         const closeChatBtn = document.getElementById('close-chat-btn');
         const showcaseSection = document.getElementById('showcase');
-        const chatMessages = document.getElementById('chat-messages');
+        const chatMessages = document.getElementById('chat-messages'); // This is the messages container inside the chat box
 
         let currentSessionId = null; // Store the session ID for the current chat
 
-        // Function to show loading state and then chatbot UI
+        // Function to show chatbot UI and append initial message
         async function initiateChatbotDemo(sessionId, initialMessage) {
             currentSessionId = sessionId; // Store the session ID
             formContainer.classList.add('hidden'); // Hide the form
-            chatbotWindow.classList.remove('hidden'); // Show the chatbot window container
 
-            // Hide loading state and show actual chatbot UI immediately
-            chatbotLoadingState.style.display = 'none';
-            actualChatbotUI.style.display = 'block';
-
-            // Animate chatbot window in
-            setTimeout(() => {
-                chatbotWindow.classList.remove('opacity-0', 'scale-95');
-                chatbotWindow.classList.add('opacity-100', 'scale-100');
-            }, 10);
+            // Show the chatbot window container
+            chatbotWindow.classList.remove('hidden', 'opacity-0', 'scale-95');
+            chatbotWindow.classList.add('opacity-100', 'scale-100');
             
             showcaseSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
-            // Clear messages before adding the new ones (including temporary loading message)
+            // Clear previous messages and show the chat UI
             chatMessages.innerHTML = '';
-            appendMessage("Loading personalized AI demo...", 'ai'); // No need for ID if we clear innerHTML
+            actualChatbotUI.style.display = 'block';
 
-            // Delay for demo realism, remove in production
-            await new Promise(resolve => setTimeout(resolve, 2000)); // 2-second delay for perceived "analysis"
-
-            // Now, append the actual initial AI message
+            // Add the actual initial AI message
             if (initialMessage) {
-                chatMessages.innerHTML = ''; // Clear temporary loading message before adding actual message
                 appendMessage(initialMessage, 'ai');
             } else {
                 appendMessage("Error: Could not initialize chatbot with a welcome message. Please try again.", 'ai');
@@ -395,21 +376,20 @@
             const formData = new FormData(aiDemoForm);
             const data = Object.fromEntries(formData.entries());
 
-            // Show loading spinner while fetching
-            chatbotWindow.classList.remove('hidden');
-            chatbotLoadingState.style.display = 'block';
-            actualChatbotUI.style.display = 'none'; // Hide the chat UI until initial message
+            // Show the main chatbot loading spinner and hide the actual chat UI initially
+            chatbotWindow.classList.remove('hidden'); // Ensure the overall window is visible for the spinner
+            chatbotLoadingState.style.display = 'block'; // Show the spinner and its text
+            actualChatbotUI.style.display = 'none'; // Hide the chat UI itself
 
             try {
-                // IMPORTANT: This is the webhook URL for initiating the demo.
-                // Reverted to the test URL for debugging as requested.
+                // IMPORTANT: Using the test webhook URL as requested for debugging.
                 const response = await fetch('https://redbonnets1.app.n8n.cloud/webhook-test/163b1ae3-f4a4-4f45-ac8a-f2f4dcfccf5a', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify(data)
                 });
 
-                // Hide loading spinner regardless of success/failure for the form submission part
+                // Always hide the initial loading spinner once the fetch call returns a response
                 chatbotLoadingState.style.display = 'none';
 
                 if (!response.ok) {
@@ -421,10 +401,11 @@
                 if (result.sessionId && result.initialMessage) {
                     formSubmissionMessage.textContent = ''; // Clear message
                     formSubmissionMessage.style.display = 'none';
+                    // Call initiateChatbotDemo only after a successful response
                     initiateChatbotDemo(result.sessionId, result.initialMessage);
                 } else {
                     formSubmissionMessage.className = 'mt-4 text-center text-sm text-red-500';
-                    formSubmissionMessage.textContent = 'Error: Could not start demo. Please check your inputs or n8n workflow response.';
+                    formSubmissionMessage.textContent = 'Error: Could not start demo. Check n8n workflow response.';
                     console.error('n8n webhook response missing session ID or initial message:', result);
                     chatbotWindow.classList.add('hidden'); // Hide chat window if demo couldn't start
                     formContainer.classList.remove('hidden'); // Show form again
@@ -432,7 +413,7 @@
             } catch (error) {
                 console.error('Form submission error to n8n webhook:', error);
                 formSubmissionMessage.className = 'mt-4 text-center text-sm text-red-500';
-                formSubmissionMessage.textContent = 'An error occurred. Please try again later.';
+                formSubmissionMessage.textContent = 'An error occurred during communication. Please try again.';
                 chatbotLoadingState.style.display = 'none'; // Hide spinner
                 chatbotWindow.classList.add('hidden'); // Hide chat window if error
                 formContainer.classList.remove('hidden'); // Show form again
@@ -452,12 +433,10 @@
         });
 
         // Helper function to append messages to the chat UI
-        // Removed optional messageId parameter as innerHTML is now cleared
         function appendMessage(text, sender) {
             const messageEl = document.createElement('div');
             messageEl.className = `flex items-start space-x-3 ${sender === 'user' ? 'justify-end' : 'chat-bubble'}`;
-            // Removed messageId logic as it's no longer needed for removal
-
+            
             const avatarHtml = sender === 'user'
                 ? `<div class="bg-slate-700 text-slate-300 p-2 rounded-full flex-shrink-0"><i data-lucide="user" class="w-5 h-5"></i></div>`
                 : `<div class="bg-sky-500/20 text-sky-300 p-2 rounded-full flex-shrink-0"><i data-lucide="bot" class="w-5 h-5"></i></div>`;
